@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+    <title>Edit book</title>
+</head>
+<body>
+    <div class="form_wrapper">
+        <div class="lib_head">
+            <svg class="book_icon"
+     viewBox="0 0 24 24"
+     width="40"
+     height="40"
+     fill="var(--book-page)"
+     stroke="currentColor"
+     stroke-width="1.5"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- lewa strona -->
+    <path d="M4 5
+             C4 3.5 5.5 2.5 7 2.5
+             C9 2.5 10.5 3.2 12 4
+             V21
+             C10.5 20 9 19.5 7 19.5
+             C5.5 19.5 4 20.5 4 22
+             V5Z" />
+             <g stroke="var(--accent)" opacity="0.4">
+                <path d="M6.5 7h3" />
+                <path d="M6.5 9h3.5" />
+                <path d="M6.5 11h3" />
+            
+                <path d="M17.5 7h-3" />
+                <path d="M17.5 9h-3.5" />
+                <path d="M17.5 11h-3" />
+            </g>
+    <!-- prawa strona -->
+    <path d="M20 5
+             C20 3.5 18.5 2.5 17 2.5
+             C15 2.5 13.5 3.2 12 4
+             V21
+             C13.5 20 15 19.5 17 19.5
+             C18.5 19.5 20 20.5 20 22
+             V5Z" />
+             <g stroke="var(--accent)" opacity="0.4">
+                <path d="M6.5 7h3" />
+                <path d="M6.5 9h3.5" />
+                <path d="M6.5 11h3" />
+            
+                <path d="M17.5 7h-3" />
+                <path d="M17.5 9h-3.5" />
+                <path d="M17.5 11h-3" />
+            </g>
+    <!-- linia grzbietu -->
+    <path d="M12 4V21" />
+
+</svg> <h2 class="title">Edit Book</h2>
+        </div>
+        <div class="form_shadow">
+      
+            <form action="/edit:id" method="patch" class="add_form" id="editForm">
+                <label for="title">
+                    Title
+                </label>
+                <input type="text" name="title" id="title" value="<%=book.title %>" placeholder="Enter book title" required>
+                <label for="author">
+                    Author
+                </label>
+                <input type="text" name="author" id="author" value="<%=book.author %>" placeholder="Enter author" required>
+                <div class="rating">
+                    <% for(let i=5; i>0; i--){ %>
+                    <input type="radio" name="rating" id="star<%=i%>" value="<%=i%>"  <%= i === book.rating ? 'checked' : '' %>>
+                    <label for="star<%=i%>">★</label>
+                    <% } %>
+                </div>
+                <label for="date">
+                    Date read
+                </label>
+                <input type="date" name="date_read" value="<%=new Date(book.date_read).toISOString().split('T')[0] %>" id="date_read" required>
+                <label for="review">
+                    Review
+                </label>
+                <textarea name="review" id="review" placeholder="Enter review about book" rows="14" required><%=book.review %></textarea>
+                <div class="btn_wrapper">
+                    <button class="add btn" type="submit" id="addBtn">Update book</button>
+                </div>
+            </form>
+      
+        </div>
+        
+    </div>
+</body>
+</html>

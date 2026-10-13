@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link href="css/fontello.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/236e28bd84.js" crossorigin="anonymous"></script>
+    <script src="/app.js" defer></script>
+    <title>Book notes</title>
+</head>
+<body>
+    <!-- <div id="partials">
+        <div class="dropdown_overlay">
+            <div class="dropdown_container" id="search_dropdown">
+                <div class="dropdown_content">
+                    <div class="sugestion_results">
+                        <div class="sugestion_header">
+                            <span class="header_search">Books</span>
+                            <span class="header_search_results"></span>
+                        </div>
+                        <div class="search_results">
+                            
+                        </div>
+                        <button class="btn">See all results <i class="fa-solid fa-square-poll-horizontal"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="header_wrapper">
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-book-open"></i><h1 class="title-logo">Books</h1>
+        </div>
+        <div class="search_wrapper">
+            <form class="search">
+                <i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search  books" id="search-input">   
+               
+            </form>
+            <div class="dropdown_container" id="search_dropdown">
+                <div class="dropdown_content">
+                    <div class="sugestion_results">
+                        <div class="sugestion_header">
+                            <span class="header_search">Books</span>
+                            <span class="header_search_results"></span>
+                        </div>
+                        <div class="search_results">
+                            
+                        </div>
+                        <button class="btn">See all results <i class="fa-solid fa-square-poll-horizontal"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <button id="add" class="add btn"><a href="/add"><i class="fa-solid fa-square-plus"></i> Add Book</a></button>
+        </div>
+    </header>
+</div>
+    <main>
+        <div class="lib">
+            <div class="lib_head">
+                <h2>My Library</h2>
+                <p><%= count %> Books</p>
+                <span class="lib_desc">
+                    What I’ve read. What I remember. What stayed. 
+                </span>
+            </div>
+            <div class="order">
+                <div class="dropdown_filter_select" data-default="Rating">
+                    <label for="order" class="select-trigger text">
+                        Order by: <span>Rating</span>
+                    </label>  
+                    <div class="arrow" id="order">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="select-options text">
+                        <li data-value="rating" class="text">
+                            Rating
+                        </li>
+                        <li data-value="recency" class="text">
+                            Recency 
+                        </li>
+                        <li data-value="title" class="text">
+                            Title
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="books_content">
+                <% for(let i=0; i<result.rows.length; i += 3){ %>
+                    <div class="books_column">
+                        <%  result.rows.slice(i,i +3).forEach(book => { %>
+                            <div class="book_card" data-id="<%= book.id %>" data-rating="<%= book.rating %>"
+                                data-title="<%= book.title %>"
+                                data-recency="<%= book.date_read %>">
+                                <div class="book_wrapper" tabindex="0">
+                                    <div class="book_edit" aria-label="Edit book">
+                                        ✎
+                                    </div>
+                                    <div class="book_main">
+                                        <div class="book_cover">
+                                            <img src="https://covers.openlibrary.org/b/id/<%=book.isbn %>-L.jpg" alt="Book cover" loading="lazy">
+                                        </div>
+                                        <div class="book_info">
+                                            <div class="book_title">
+                                                <p><%= book.title %></p>
+                                            </div>
+                                            <div class="book_author">
+                                                <p><%= book.author %></p>
+                                            </div>
+                                            <div class="book_rating">
+                                                <%  for(let i =0;i< 5;i++ ){ %>
+                                                    <%        if(i < book.rating){%>
+                                                            <span class="active">★</span>
+                                                            <%     }else{%>
+                                                            <span>★</span>
+                                                            <%   }%>
+                                                    <%   }  %>
+                                            </div>
+                                            <div class="book_date">
+                                                <span><%= new Date(book.date_read).toLocaleDateString() %></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="book_note">
+                                        <p><%= book.review %></p>
+                                    </div>
+                                </div>
+                            </div>
+                                <%    });      %>
+                        
+                    <%  }%>
+   
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
