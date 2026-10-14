@@ -210,6 +210,42 @@ app.patch("/edit/:id", async (req,res)=>{
       });
     }
 
+    const ratingNumber = Number(rating);
+        if (!rating?.trim() || ratingNumber < 1 || ratingNumber > 5 || !Number.isInteger(ratingNumber)) {
+          return  res.status(400).json({
+            message: "Rating must be between 1-5"
+          });
+      }
+
+
+      if(!date_read?.trim()){
+        return  res.status(400).json({
+          message: "Date is empty"
+        });
+      }
+
+      const date = new Date();
+
+        const readDate = new Date(date_read);
+
+        const isvalidDate  = readDate.getTime();
+
+        if(Number.isNaN(isvalidDate)){
+          return res.status(400).json({
+            message: "Invalid Date"
+        });
+        }
+        date.setHours(0,0,0,0)
+
+        readDate.setHours(0,0,0,0)
+
+        if(readDate > date){
+          return res.status(400).json({
+            message: "Date cannot be in the future"
+        });
+        
+        }
+
 try{
   await db.query(
     `UPDATE books
