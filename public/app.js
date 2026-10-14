@@ -380,3 +380,22 @@ function renderMessage(text,count = ''){
 
 
  // -> books_column
+const editBtn = document.querySelector('$editBtn');
+
+
+if(editBtn){
+    editBtn.addEventListener('submit',(e)=>{
+        e.preventDefault()
+    })
+}
+
+
+
+async function editForm(){
+    try{
+        const res = await fetch(``);
+        console.log('rest',res);
+             
+        }catch(err){
+     }
+}

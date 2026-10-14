@@ -203,26 +203,20 @@ app.patch("/edit/:id", async (req,res)=>{
 
   const id = req.params.id;
     const { title, author, rating,review,date_read } = req.body;
-
-    if([title,author,review,date_read].some(i=> !i?.trim())){
+ 
+    if([title,author,review,date_read].some(i => typeof i !== "string" || i.trim() ==='')){
       return  res.status(400).json({
-        message: "Title, author and review are required."
+        message: "Title, author, date_read and review are required."
       });
     }
 
     const ratingNumber = Number(rating);
-        if (!rating?.trim() || ratingNumber < 1 || ratingNumber > 5 || !Number.isInteger(ratingNumber)) {
+        if (ratingNumber < 1 || ratingNumber > 5 || !Number.isInteger(ratingNumber)) {
           return  res.status(400).json({
             message: "Rating must be between 1-5"
           });
       }
 
-
-      if(!date_read?.trim()){
-        return  res.status(400).json({
-          message: "Date is empty"
-        });
-      }
 
       const date = new Date();
 
@@ -246,18 +240,69 @@ app.patch("/edit/:id", async (req,res)=>{
         
         }
 
+
+        let oldTitle;
+
+
+        try{
+          oldTitle =   await db.query(
+            `select title, author from books
+             WHERE id = $1`,
+            [id]
+        );
+        console.log(oldTitle);
+        }catch(e){
+          console.log(e);
+          return res.status(500).send( `Database error: something gone wrong with database, contact your administrator`);
+        }
+      
+let coverId;
 try{
-  await db.query(
+  let  result = await axios.get(API_URL,{
+    params:{
+      title: title,
+    author: author,
+    sort: "new",
+    fields: "title,author_name,cover_i,first_publish_year,edition_key",
+    limit: 100
+    }
+  });
+  if (result.data.docs.length === 0) {
+    result = await axios.get(API_URL, {
+        params: {
+            title: title,
+            fields: "title,author_name,cover_i,first_publish_year,edition_key",
+            limit: 100
+        }
+    });
+}
+ coverId = result.data.docs.find(b => b.cover_i)?.cover_i;
+
+}catch(e){
+  console.log(e);
+ // return res.status(500).send( `API error: something gone wrong with openLibrary, contact your administrator`);
+}
+try{
+
+ const updatResult = await db.query(
     `UPDATE books
      SET title = $1,
-         author = $2
+         author = $2,
+         rating = $4,
+         review = $5,
+         date_read = $6,
+         isbn = COALESCE($7, isbn)
      WHERE id = $3`,
-    [title, author, id]
+    [title, author, id, ratingNumber,review,date_read, coverId]
 );
+if(updatResult.rowCount === 0){
+  return res.status(404).json({ message: "Book not found" })
+}
 res.json({ success: true });
 //res.redirect('/');
 }catch(e){
   console.log(e);
+  res.status(500).send( `Databse error, contac your administrator`);
 }
 });
 
