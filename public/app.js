@@ -391,11 +391,15 @@ if(editBtn){
 
 
 
-async function editForm(){
+async function editFormdb(id){
     try{
-        const res = await fetch(``);
+        const res = await fetch(`/edit/${id}`,{
+            method: 'PATCH',
+            body: JSON.stringify()
+        });
         console.log('rest',res);
              
         }catch(err){
+            console.log(err);
      }
 }
