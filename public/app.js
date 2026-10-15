@@ -381,11 +381,12 @@ function renderMessage(text,count = ''){
 
  // -> books_column
 const editBtn = document.querySelector('$editBtn');
-
+const bookID = document.querySelector('#editForm').getAttribute('data-id');
 
 if(editBtn){
     editBtn.addEventListener('submit',(e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        editFormdb(id)
     })
 }
 
