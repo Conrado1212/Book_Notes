@@ -241,69 +241,80 @@ app.patch("/edit/:id", async (req,res)=>{
         }
 
 
-        let oldTitle;
+        let oldResults;
 
 
         try{
-          oldTitle =   await db.query(
-            `select title, author from books
+          oldResults =   await db.query(
+            `select title, author, isbn from books
              WHERE id = $1`,
             [id]
         );
-        console.log(oldTitle);
+        if(oldResults.rowCount === 0){
+          return res.status(404).json({ message: "Old not found" })
+        }
+
+
+        console.log(oldResults);
         }catch(e){
           console.log(e);
           return res.status(500).send( `Database error: something gone wrong with database, contact your administrator`);
         }
-      
+        let oldRes = oldResults.rows[0];
+let  changed = oldRes.title.toLowerCase().trim() !== title.toLowerCase().trim() || oldRes.author.toLowerCase().trim() !== author.toLowerCase().trim() || !oldRes.isbn;
+
 let coverId;
-try{
-  let  result = await axios.get(API_URL,{
-    params:{
-      title: title,
-    author: author,
-    sort: "new",
-    fields: "title,author_name,cover_i,first_publish_year,edition_key",
-    limit: 100
-    }
-  });
-  if (result.data.docs.length === 0) {
-    result = await axios.get(API_URL, {
-        params: {
-            title: title,
+
+      if(changed){
+        try{
+          let  result = await axios.get(API_URL,{
+            params:{
+              title: title.trim(),
+            author: author.trim(),
+            sort: "new",
             fields: "title,author_name,cover_i,first_publish_year,edition_key",
             limit: 100
+            }
+          });
+          if (result.data.docs.length === 0) {
+            result = await axios.get(API_URL, {
+                params: {
+                    title: title.trim(),
+                    fields: "title,author_name,cover_i,first_publish_year,edition_key",
+                    limit: 100
+                }
+            });
         }
-    });
-}
- coverId = result.data.docs.find(b => b.cover_i)?.cover_i;
+         coverId = result.data.docs.find(b => b.cover_i)?.cover_i;
+        
+        }catch(e){
+          console.log(e);
+         // return res.status(500).send( `API error: something gone wrong with openLibrary, contact your administrator`);
+        }
 
-}catch(e){
-  console.log(e);
- // return res.status(500).send( `API error: something gone wrong with openLibrary, contact your administrator`);
-}
-try{
+      }
+      try{
+        const updatResult = await db.query(
+           `UPDATE books
+            SET title = $1,
+                author = $2,
+                rating = $4,
+                review = $5,
+                date_read = $6,
+                isbn = COALESCE($7, isbn)
+            WHERE id = $3`,
+           [title.trim(), author.trim(), id, ratingNumber,review,date_read, coverId]
+       );
+       if(updatResult.rowCount === 0){
+         return res.status(404).json({ message: "Book not found" })
+       }
+       res.json({ success: true });
+       //res.redirect('/');
+       }catch(e){
+         console.log(e);
+         res.status(500).send( `Databse error, contac your administrator`);
+       }
 
- const updatResult = await db.query(
-    `UPDATE books
-     SET title = $1,
-         author = $2,
-         rating = $4,
-         review = $5,
-         date_read = $6,
-         isbn = COALESCE($7, isbn)
-     WHERE id = $3`,
-    [title, author, id, ratingNumber,review,date_read, coverId]
-);
-if(updatResult.rowCount === 0){
-  return res.status(404).json({ message: "Book not found" })
-}
-res.json({ success: true });
-//res.redirect('/');
-}catch(e){
-  console.log(e);
-  res.status(500).send( `Databse error, contac your administrator`);
-}
 });
 
 
