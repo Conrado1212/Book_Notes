@@ -118,7 +118,7 @@ function sortBooks(value){
 
 
 const bookContainer = document.querySelector('.books_content');
-
+if(bookContainer){
 bookContainer.addEventListener('click',(e)=>{
     console.log('target',e.target);
     const edit = e.target.closest('.book_edit');
@@ -130,6 +130,7 @@ bookContainer.addEventListener('click',(e)=>{
     console.log('edit btn ',bookid);
     window.location.href = `/book/${bookid}/edit`;
 });
+}
 
 
 
@@ -380,7 +381,7 @@ function renderMessage(text,count = ''){
 
 
  // -> books_column
-const editBtn = document.querySelector('$editBtn');
+const editBtn = document.querySelector('#editBtn');
 
 
 if(editBtn){
@@ -405,3 +406,26 @@ async function editFormdb(id){
             console.log(err);
      }
 }
+
+
+//tag area 
+function tagArea(){
+const tag = document.querySelector('#tag');
+const textarea = document.querySelector('.area_wrapper');
+if(tag){
+    tag.addEventListener('click', () => {
+        textarea.hidden = !textarea.hidden;
+    
+        if (!textarea.hidden) {
+            textarea.focus();
+        }
+    });
+    }
+    document.addEventListener('click', (e) => {
+        if (!tag.contains(e.target) && !textarea.contains(e.target)) {
+            console.log('Text area');
+            textarea.hidden = true;
+        }
+    });
+}
+
