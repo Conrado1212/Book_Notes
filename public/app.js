@@ -412,14 +412,31 @@ async function editFormdb(id){
 function tagArea(){
 const tag = document.querySelector('#tag');
 const textarea = document.querySelector('.area_wrapper');
-if(tag){
+let debounceTag;
+if (!tag || !textarea) return;
+
     tag.addEventListener('click', () => {
         textarea.hidden = !textarea.hidden;
-    
+      
         if (!textarea.hidden) {
             textarea.focus();
         }
     });
+    textarea.addEventListener('input',(e)=>{
+        const value = e.target.value.trim();
+        console.log('value: ',value);
+        if (value.length < 3) {
+            clearTimeout(debounceTag);
+            if(controller){
+                controller.abort()
+             } 
+            dropdwon.classList.remove('active');
+            return;
+        }
+            clearTimeout(debounceTag)
+            debounceTag = setTimeout(()=>dataRead(value) ,300);
+    
+     });
     }
     document.addEventListener('click', (e) => {
         if (!tag.contains(e.target) && !textarea.contains(e.target)) {
@@ -427,5 +444,5 @@ if(tag){
             textarea.hidden = true;
         }
     });
-}
+
 
