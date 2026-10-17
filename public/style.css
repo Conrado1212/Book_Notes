@@ -1048,3 +1048,45 @@ position: relative;
 }
 
 
+.tagger{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+.tagicon span{
+  font-size: 2.5rem;
+  color: var(--accent);
+  transform: rotate(10deg) scale(.8);
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text);
+  text-shadow: 3px 4px 0 rgba(0, 0, 0, 0.3), 3px 8px 0 rgba(0, 0, 0, 0.3), 3px 12px 0 rgba(0, 0, 0, 0.3);
+  transition: .25s ease;
+  cursor: pointer;
+  display: inline-block;
+  animation: ddd .8s ease-in-out infinite alternate;
+}
+.tagicon span::after {
+  position: absolute;
+  left: 10px;
+  bottom: -1rem;
+  width: 110%;
+  height: 12px;
+  content: '';
+  background: linear-gradient(to right, var(--text), transparent);
+  opacity: 0;
+  border-radius: .25rem;
+  transform: rotate(.5deg) scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.tagicon span:hover {
+  color: var(--cards);
+  -webkit-text-stroke-color: var(--text);
+  transform: rotate(0deg) scale(1);
+}
+
+.tagicon span:hover::after {
+  opacity: .35;
+  transform: rotate(1.5deg) scaleX(1);
+}
