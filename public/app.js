@@ -280,7 +280,7 @@ function renderDropdownResults(results, count){
     console.log('test search ',results);
 
         headerCount.textContent = count;
-        //czyszcenie poprzednich wynikow
+        //czyszczenie poprzednich wynikow
         resultsContainer.innerHTML = '';
 
         results.slice(0, 5).forEach(book => {
@@ -327,6 +327,33 @@ async function dataRead(value){
         renderDropdownResults(data,data.length);
         showDropdown();
 }
+async function dataReadTag(value){
+    const data =   await gameSearch(value)
+      console.log('dane szukaj ',data);
+      if(data === undefined){
+          console.log('undeigned szukaj');
+          return;
+      }
+      if (!data){
+          console.log('Error');
+          renderMessage('Error');
+          showDropdown();
+          return;
+      }
+      if(data.length === 0){
+          console.log('0 szukaj');
+          //dodac klasa zeby bylo na srodku 
+          renderMessage('No data',0);
+          showDropdown();
+          return;
+      }
+          renderDropdownResults(data,data.length);
+          showDropdown();
+  }
+
+
+
+
 function showDropdown(){
    // const rect = formek.getBoundingClientRect();
     dropdwon.classList.add('active');
@@ -439,7 +466,7 @@ if (!tag || !textarea) return;
         }
         const searchValue = match[1];
             clearTimeout(debounceTag)
-            debounceTag = setTimeout(()=>dataRead(searchValue) ,300);
+            debounceTag = setTimeout(()=>dataReadTag(searchValue) ,300);
     
      });
   
