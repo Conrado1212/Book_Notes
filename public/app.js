@@ -39,6 +39,7 @@ if(order){
 }
 
 const dropdwon = document.querySelector('.dropdown_container');
+const dropdownTag = document.querySelector('#tag_dropdown');
 
 
 
@@ -49,7 +50,80 @@ document.addEventListener('click', (e) => {
     }
 });
 }
+if(dropdownTag){
+    document.addEventListener('click', (e) => {
+        if (!dropdownTag.contains(e.target)) {
+            dropdownTag.classList.remove('active');
+        }
+    });
+    const editor = document.querySelector('.tagger_textarea');
+    dropdownTag.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.book_card_result')) {
+            e.preventDefault();
+        }
+    });
 
+
+    dropdownTag.addEventListener('click',(e)=>{
+        const item = e.target.closest('.book_card_result');
+        if(!item) return;
+
+        const result = item.querySelector('.text_search');
+        if(!result || !editor) return;
+        console.log('result dropTag :' ,result);
+        const id  = result.dataset.id;
+        const name  = result.textContent.trim();
+
+        console.log({id, name});
+
+        const selection  = window.getSelection();
+        if(selection && selection.isCollapsed){
+            const node = selection.anchorNode;
+            const offset = selection.anchorOffset;
+            if(node && node.nodeType === Node.TEXT_NODE){
+                const textBeforeCaret = node.textContent.slice(0, offset);
+                 const match = textBeforeCaret.match(/@([\p{L}\p{N}_]{3,})$/u);
+                 console.log('before:', textBeforeCaret);
+                console.log('matche: ',match);
+                const start = offset - match[0].length;
+                const range = document.createRange();
+
+                range.setStart(node, start);
+                range.setEnd(node, offset);
+
+                console.log(range.toString());
+
+                const mention = document.createElement('span');
+
+                mention.className = 'mention';
+                mention.dataset.id = id;
+                mention.textContent = `@${name}`;
+                mention.contentEditable = 'false';
+
+                range.deleteContents();
+                range.insertNode(mention);
+                dropdownTag.classList.remove('active');
+
+                    //cursor set
+                const space = document.createTextNode('\u00A0');
+                mention.after(space);
+                const caret = document.createRange();
+                caret.setStartAfter(space);
+                caret.collapse(true);
+
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(caret);
+
+                editor.focus();
+            }
+        }
+        
+
+        console.log(cursor);
+    });
+
+    }
 
 
 
@@ -299,8 +373,6 @@ function renderDropdownResults(results, count){
          `;
          item.querySelector('.text_search').textContent= book.title;
          resultsContainer.appendChild(item);
-
-
         });
 }
 
@@ -327,6 +399,36 @@ async function dataRead(value){
         renderDropdownResults(data,data.length);
         showDropdown();
 }
+
+function renderDropdownTagResults(results, count){
+    const resultsContainer = document.querySelector('#tag_dropdown .search_results');
+     const headerCount = document.querySelector('#tag_dropdown .header_search_results');
+
+    console.log('test search ',results);
+
+        headerCount.textContent = count;
+        //czyszczenie poprzednich wynikow
+        resultsContainer.innerHTML = '';
+
+        results.slice(0, 5).forEach(book => {
+            const item = document.createElement('ul');
+            item.classList.add('search_result_item');
+
+            item.innerHTML = `
+             <li class="book_card_result">
+                 <span class ="text_search" data-id="${book.id}"></span>
+             </li>
+         `;
+         item.querySelector('.text_search').textContent= book.title;
+         resultsContainer.appendChild(item);
+        });
+}
+
+
+
+
+
+
 async function dataReadTag(value){
     const data =   await gameSearch(value)
       console.log('dane szukaj ',data);
@@ -337,18 +439,18 @@ async function dataReadTag(value){
       if (!data){
           console.log('Error');
           renderMessage('Error');
-          showDropdown();
+          showDropdownTag();
           return;
       }
       if(data.length === 0){
           console.log('0 szukaj');
           //dodac klasa zeby bylo na srodku 
           renderMessage('No data',0);
-          showDropdown();
+          showDropdownTag();
           return;
       }
-          renderDropdownResults(data,data.length);
-          showDropdown();
+        renderDropdownTagResults(data,data.length);
+          showDropdownTag();
   }
 
 
@@ -359,6 +461,9 @@ function showDropdown(){
     dropdwon.classList.add('active');
   //  dropdwon.style.left = `${rect.left + window.scrollX}px`;
 //dropdwon.style.width = `${rect.width}px`;
+}
+function showDropdownTag(){
+    dropdownTag.classList.add('active');
 }
 function renderMessage(text,count = ''){
     const resultsContainer = document.querySelector('.search_results');
@@ -461,7 +566,7 @@ if (!tag || !textarea) return;
             if(controller){
                 controller.abort()
              } 
-            dropdwon.classList.remove('active');
+             dropdownTag.classList.remove('active');
             return;
         }
         const searchValue = match[1];

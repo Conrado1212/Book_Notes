@@ -931,6 +931,19 @@ position: relative;
   opacity: .9;
   pointer-events: auto;
 }
+#tag_dropdown.active{
+  visibility: visible;
+  opacity: .9;
+  pointer-events: auto;
+  
+}
+#tag_dropdown{
+  top: -10px;
+  transform: translateY(-100%);
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .dropdown_content {
   background: repeating-linear-gradient(
       to bottom,
@@ -1042,7 +1055,9 @@ position: relative;
 .book_card_result:hover{
   background: repeating-linear-gradient(to bottom, #f4efe5 0px, #f4efe5 8px, #e5ddd0 9px);
 }
-
+#tag_dropdown .book_card_result{
+ list-style: none;
+}
 .text_search:hover{
   
 }
@@ -1133,4 +1148,11 @@ position: relative;
     border-radius: .5rem;
     background: repeating-linear-gradient(to bottom, #f4efe5 0px, #f4efe5 8px, #e5ddd0 9px);
     padding: .5rem;
+}
+.mention {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, .12);
+  font-weight: 600;
+  border-radius: .2rem;
+  padding: 0 .15rem;
 }
