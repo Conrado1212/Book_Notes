@@ -412,6 +412,7 @@ async function editFormdb(id){
 function tagArea(){
 const tag = document.querySelector('#tag');
 const textarea = document.querySelector('.area_wrapper');
+const textareaData = document.querySelector('.area_wrapper .tagger_textarea');
 let debounceTag;
 if (!tag || !textarea) return;
 
@@ -419,13 +420,16 @@ if (!tag || !textarea) return;
         textarea.hidden = !textarea.hidden;
       
         if (!textarea.hidden) {
-            textarea.focus();
+            textareaData.focus();
         }
     });
     textarea.addEventListener('input',(e)=>{
-        const value = e.target.value.trim();
+       // const value = e.target.value.trim();
+        const value = textarea.textContent.trim();
         console.log('value: ',value);
-        if (value.length < 3) {
+        const match = value.match(/@([\p{L}\p{N}_]{3,})$/u);
+
+        if (!match) {
             clearTimeout(debounceTag);
             if(controller){
                 controller.abort()
@@ -433,16 +437,17 @@ if (!tag || !textarea) return;
             dropdwon.classList.remove('active');
             return;
         }
+        const searchValue = match[1];
             clearTimeout(debounceTag)
-            debounceTag = setTimeout(()=>dataRead(value) ,300);
+            debounceTag = setTimeout(()=>dataRead(searchValue) ,300);
     
      });
-    }
+  
     document.addEventListener('click', (e) => {
         if (!tag.contains(e.target) && !textarea.contains(e.target)) {
             console.log('Text area');
             textarea.hidden = true;
         }
     });
-
+}
 
