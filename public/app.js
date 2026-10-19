@@ -50,6 +50,8 @@ document.addEventListener('click', (e) => {
     }
 });
 }
+
+//tagger
 if(dropdownTag){
     document.addEventListener('click', (e) => {
         if (!dropdownTag.contains(e.target)) {
@@ -111,7 +113,7 @@ if(dropdownTag){
                 caret.setStartAfter(space);
                 caret.collapse(true);
 
-                const selection = window.getSelection();
+                selection = window.getSelection();
                 selection.removeAllRanges();
                 selection.addRange(caret);
 
@@ -583,3 +585,18 @@ if (!tag || !textarea) return;
     });
 }
 
+function extractAttributes(element) {
+    let attr =[]
+   
+
+    for (const match of element.matchAll(/(\w+)="([^"]*)"/g)) {
+        attr.push(`${match[1]}, ${match[2]}`);
+    }
+    return attr;
+   
+  }
+
+
+  extractAttributes('<span class="red"></span>')
+
+  extractAttributes('<meta charset="UTF-8" />')
