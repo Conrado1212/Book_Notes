@@ -600,3 +600,75 @@ function extractAttributes(element) {
   extractAttributes('<span class="red"></span>')
 
   extractAttributes('<meta charset="UTF-8" />')
+
+
+
+  function calculateTips(mealPrice, customTip) {
+      let ddd = mealPrice.slice(1);
+      let val = Number(ddd);
+    let value =[];
+    [15,20,parseFloat(customTip)].forEach(e=>{
+        let m = e*val/100
+        value.push(`$${m.toFixed(2)}`)
+    })
+    return value;
+  }
+
+  calculateTips("$10.00", "25%")
+
+
+
+  function adjustThermostat(currentF, targetC) {
+    let data  = (targetC * 1.8) + 32;
+    console.log(data);
+    if(data === currentF){
+        return 'Hold'
+    }else if(data > currentF){
+        let sub  = data - currentF
+        return `Heat: ${sub.toFixed(1)} degrees Fahrenheit`
+    }else{
+        let re  = currentF - data
+        return `Cool: ${re.toFixed(1)} degrees Fahrenheit`
+    }
+
+  
+  }
+  adjustThermostat(72, 18)
+  adjustThermostat(70, 25)
+  //adjustThermostat(32, 0)
+
+  function sockPairs(pairs, cycles) {
+      let initalCount = pairs*2
+    for(let i =cycles;i>0;i--){
+        if(i %2 === 0){
+            initalCount--
+            if(initalCount === 0){
+                return 0;
+            }
+        }
+        if(i %3 === 0){
+            initalCount++
+        }
+        if(i %5 === 0){
+            initalCount--
+            if(initalCount === 0){
+                return 0;
+            }
+        }
+        if(i %10 === 0){
+            initalCount+=2
+        }
+    }
+    return  Math.floor(initalCount/2);
+  }
+
+  sockPairs(2, 5)
+
+
+  function mask(card) {
+      let dd = card.slice(-4);
+      let first  = card.slice(0,-4)
+        
+     return first.replace(/\d/g,'*')+dd;
+  }
+  mask("4012-8888-8888-1881")
