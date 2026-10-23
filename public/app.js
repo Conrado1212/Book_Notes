@@ -672,3 +672,112 @@ function extractAttributes(element) {
      return first.replace(/\d/g,'*')+dd;
   }
   mask("4012-8888-8888-1881")
+
+
+
+  function wiseSpeak(sentence) {
+      let words = ["have", "must", "are", "will", "can"]
+
+      //fot
+      let punctuation = sentence.slice(-1);
+      //without dot 
+      let text = sentence.slice(0, -1);
+      //split data 
+      let sentenceWords = text.split(" ");
+
+     let data =  sentenceWords.findIndex(word => words.includes(word.toLowerCase()))
+    console.log(data);
+
+    let wordData  = sentenceWords.slice(0,data+1)
+    let wordData2 = sentenceWords.slice(data+1)
+    
+    let ddd = wordData.map(w => w.toLowerCase())
+    let one = wordData2[0] = wordData2[0][0].toUpperCase() + wordData2[0].slice(1);
+    return `${one} ${wordData2.slice(1).join(" ")}, ${ddd.join(" ")}${punctuation}`;
+  }
+
+
+  wiseSpeak("You must speak wisely.")
+
+
+
+  function validate(email) {
+    let check  =  email.split('@');
+    if(check.length != 2){
+        return false;
+    }
+    let [local, domain] = email.split("@");
+
+   
+    if(!/^[a-zA-Z0-9._-]+$/.test(local)){
+        return false;
+    } 
+    
+    if(local.startsWith('.') || local.includes('..') || local.endsWith('.')){
+        return false;
+    }
+    if(!/\.[a-zA-Z]{2,}$/.test(domain)){
+        return false;
+    } 
+    if(domain.startsWith('.') || domain.includes('..')){
+        return false;
+    }
+    return true;
+  }
+
+
+  validate("a@b.cd")
+
+
+  function favoriteSongs(playlist) {
+  
+    return playlist.sort((a,b)=> b.plays -a.plays).slice(0, 2).map(e=>e.title);
+  }
+  favoriteSongs([{"title": "Sync or Swim", "plays": 3}, {"title": "Byte Me", "plays": 1}, {"title": "Earbud Blues", "plays": 2} ])
+
+
+  function stripTags(html) {
+
+    return html.replace(/<[^>]*>/g,'');
+  }
+  stripTags('<a href="#">Click here</a>')
+
+
+  function count(text, pattern) {
+      let count = 0
+      let index = text.indexOf(pattern);
+    while(index !== -1){
+       
+        
+            count++;
+            index = text.indexOf(pattern, index + 1);
+        
+    }
+    return count;
+  }
+
+  count('101010101010101010101', '101')
+
+
+  function to12(time) {
+    let h = Number(time.slice(0,2))
+    let m = time.slice(2)
+    let check;
+    console.log(h,m);
+  
+    if(h> 12){
+        h=h-12
+        check = 'PM'
+    }else if(h ===0){
+        h =12;
+        check = 'AM'
+    }else if(h===12){
+        
+        check = 'PM'
+    }else{
+        check = 'AM'
+    }
+    return `${h}:${m} ${check}`;
+  }
+
+  to12("0030")
