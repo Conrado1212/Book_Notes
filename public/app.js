@@ -780,4 +780,71 @@ function extractAttributes(element) {
     return `${h}:${m} ${check}`;
   }
 
-  to12("0030")
+  to12("0030");
+
+
+
+  function dive(map, coordinates) {
+    const [row, col] = coordinates;
+    const cell = map[row][col];
+    if(cell === 'O'){
+        
+        return map.flat().filter(e => e === "O").length === 1 ?  "Recovered" : "Found";
+    }else if(cell === '-'){
+        return"Empty";
+    }else{
+        return"Found";
+    }
+  }
+
+
+
+    dive([[ "-", "X"], [ "-", "X"], [ "-", "O"]], [2, 0])
+
+
+
+    function battle(ourTeam, opponent) {
+        let words1 = ourTeam.split(' ');
+        let words2 = opponent.split(' ');
+        let oW =0;
+        let oppW = 0;
+       
+        for(let i=0;i<words1.length;i++){
+            let ourScore = 0;
+            let opponentScore = 0;
+            for (const letter of words1[i]) {
+               let  value = letter.toLowerCase().charCodeAt(0) - 96;
+
+               if(letter === letter.toUpperCase()){
+                   value *=2;
+               }
+               ourScore+= value
+            }
+            for (const letter of words2[i]) {
+                let  value = letter.toLowerCase().charCodeAt(0) - 96;
+
+                if(letter === letter.toUpperCase()){
+                    value *=2;
+                }
+                opponentScore+= value
+            }
+            if(opponentScore > ourScore){
+                oppW++;
+            }else if(opponentScore< ourScore){
+                oW++;
+            }
+
+        }
+
+        if(oW>oppW){
+            return 'We win'
+        }else if(oppW>oW){
+            return 'We lose'
+        }else{
+            return 'Draw'
+        }
+
+      }
+
+
+      battle("hello world", "hello word")
