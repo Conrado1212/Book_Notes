@@ -847,4 +847,34 @@ function extractAttributes(element) {
       }
 
 
-      battle("hello world", "hello word")
+      battle("hello world", "hello word");
+
+
+
+      function hexToDecimal(hex) {
+          let value;
+          let result=0;
+        for (const letter of hex) {
+            if(letter >='0' && letter <= '9'){
+                value = Number(letter);
+            }else{
+                value = letter.toUpperCase().charCodeAt(0) - 55;
+            }
+            result = result * 16 + value;
+        }
+
+        return result;
+      }   
+
+
+
+
+      hexToDecimal("15")
+
+
+
+
+      function launchFuel(payload) {
+
+        return payload;
+      }
