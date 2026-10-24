@@ -875,6 +875,15 @@ function extractAttributes(element) {
 
 
       function launchFuel(payload) {
-
-        return payload;
+        let result  = 0;
+        let start = payload
+        console.log('first',start);
+        while(start>=1){
+            start= start/5
+            result+=start;
+            console.log('second',start);
+        }   
+        return result.toFixed(1);
       }
+
+      launchFuel(50)
