@@ -887,3 +887,167 @@ function extractAttributes(element) {
       }
 
       launchFuel(50)
+
+
+
+      function complementaryDNA(strand) {
+        let word='';
+        for(let i= 0;i<strand.length;i++){
+           if(strand[i] === 'A') {
+            word+='T' 
+           }else if(strand[i] === 'T'){
+            word+='A' 
+           }else if(strand[i] === 'C'){
+            word+='G'
+           }else if(strand[i] === 'G'){
+            word+='C'
+           } 
+        }
+        return word;
+      }
+
+      function complementaryDNA(strand) {
+        const pairs = {
+            A: 'T',
+            T: 'A',
+            C: 'G',
+            G: 'C'
+        };
+    
+        let word = '';
+    
+        for (const letter of strand) {
+            word += pairs[letter];
+        }
+    
+        return word;
+    }
+      complementaryDNA("ACGT");
+
+
+
+
+      function moonPhase(dateString) {
+        let start = new Date('2000-01-06')
+        let date = new Date(dateString);
+        const elapsedDayes = (date.getTime() - start.getTime())/(1000 * 60 * 60 * 24);
+        const cycleDay = (elapsedDayes % 28) + 1;
+        if(cycleDay<8){
+            return 'New'
+        }else if(cycleDay>7 && cycleDay<15){
+            return 'Waxing'
+        }else if(cycleDay>14 && cycleDay <22){
+            return 'Full'
+        }else if(cycleDay >21 && cycleDay <29){
+            return 'Waning'
+        }
+      
+      }
+
+      moonPhase("2000-01-12");
+
+
+      function goldilocksZone(mass) {
+          let calc =[];
+       let ddd =   Math.sqrt(Math.pow(mass, 3.5));
+       let start = Number((ddd*0.95).toFixed(2));
+       let end =  Number((ddd * 1.37).toFixed(2));
+       calc.push(start)
+       calc.push(end)
+        return calc;
+      }
+
+      goldilocksZone(1);
+
+
+      function findLandingSpot(matrix) {
+          let safestSpot=[];
+          let lowestDanger=Infinity;
+          let danger;
+        for(let i=0;i<matrix.length;i++){
+            for(let j=0;j<matrix[i].length;j++){
+                if(matrix[i][j] === 0){
+                    danger  = 0;
+                    if(i >0){
+                        danger+=matrix[i - 1][j]
+                    }
+                    if(i<matrix.length-1){
+                        danger+=matrix[i + 1][j]
+                    }
+                   if(j>0){
+                    danger+=matrix[i][j-1]
+                   }
+                   if(j<matrix[i].length-1){
+                    danger+=matrix[i][j+1] 
+                   }
+                }
+                if(danger< lowestDanger){
+                    lowestDanger = danger;
+                    safestSpot=[i,j];                   
+                }
+            }
+        }
+          return safestSpot;
+      }
+      findLandingSpot([[9, 0, 3], [7, 0, 4], [8, 0, 5]]);
+
+
+
+
+      function sendMessage(route) {
+          let sum  = 0;
+          route.forEach(e =>{
+              sum +=e
+          });
+        let data  = sum/300000+0.5*(route.length-1)
+        return data.toFixed(4);
+      }
+
+
+      sendMessage([384400, 384400]);
+
+
+
+
+      function hasExoplanet(readings) {
+        let value;
+        let result=[];
+      for (const letter of readings) {
+          if(letter >='0' && letter <= '9'){
+              value = Number(letter);
+          }else{
+              value = letter.toUpperCase().charCodeAt(0) - 55;
+          }
+          result.push(value);
+      }
+      const sum = result.reduce(function(accumulator, currentValue) {
+        return accumulator + currentValue;
+      },0)
+      const avg = sum / result.length
+      return result.some(v =>v <=avg *0.8);
+      }
+
+
+
+      hasExoplanet("665544554");
+
+
+      function classification(temp) {
+        if(temp < 3700){
+            return "M"
+        }else if(temp > 3699 && temp < 5200){
+            return "K"
+        }else if(temp > 5199 && temp < 6000){
+            return "G"
+        }else if(temp > 5999 && temp < 7500){
+            return "F"
+        }else if(temp > 7499 && temp < 10000){
+            return "A"
+        }else if(temp > 9999 && temp < 30000){
+            return "B"
+        }else{
+            return "O"
+        }
+      }
+
+      classification(210000)
