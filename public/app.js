@@ -1050,4 +1050,76 @@ function extractAttributes(element) {
         }
       }
 
-      classification(210000)
+      classification(210000);
+
+
+
+      function format(seconds) {
+          if(seconds < 60 ){
+           return  `0:${String(seconds).padStart(2, "0")}`
+          }else if(seconds <3600 ){
+            const mm = Math.floor((seconds/60))
+            const ss = seconds%60
+            return `${mm}:${String(ss).padStart(2, "0")}`
+          }else if(seconds > 3599){
+              const hh = Math.floor((seconds/3600))
+            const mm = Math.floor(((seconds -(hh*3600))/60))
+            const ss = seconds%60
+            if(mm<10){
+                return `${hh}:0${mm}:${ss}`
+            }else{
+                return `${hh}:${mm}:${ss}`
+            }
+           
+          }
+      }
+
+      format(60);
+
+
+
+      function checkStrength(password) {
+        let special = ['!','@','#','$','%','^','&','*'];
+        let length = 8;
+        let letter = /[a-z]/;
+        let uletter = /[A-Z]/;
+        let numbers = /[0-9]/;
+        let rule=0;
+        if(password.length >= length){
+            rule++;
+            console.log('length',rule);
+        }
+         if(special.some(e=>password.includes(e))){
+            rule++;
+            console.log('special',rule);
+        }
+        if(letter.test(password) && uletter.test(password)){
+            rule++;
+            console.log('letter',rule);
+        }
+        if(numbers.test(password)){
+            rule++;
+            console.log('numbers',rule);
+        }
+        if(rule <2){
+            return 'weak'
+        }else if(rule <4){
+            return 'medium';
+        }else{
+            return 'strong'
+        }
+
+      }
+
+      checkStrength("qwerty12345")
+
+      function checkStrength(password) {
+        let special = ['!','@','#','$','%','^','&','*'];
+        const checks =[password.length >=8,
+            special.some(e=>password.includes(e)),
+            /[a-z]/.test(password) && /[A-Z]/.test(password),
+            /[0-9]/.test(password)
+        ];
+        const rule = checks.filter(Boolean).length;
+       return rule < 2? 'weak' : rule < 4 ? 'medium' : 'strong'; 
+      }
