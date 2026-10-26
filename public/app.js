@@ -1123,3 +1123,30 @@ function extractAttributes(element) {
         const rule = checks.filter(Boolean).length;
        return rule < 2? 'weak' : rule < 4 ? 'medium' : 'strong'; 
       }
+
+      function toBinary(decimal) {
+        let reminder ='';
+        while(decimal !=0){
+          let xd =  decimal%2
+          console.log(xd);
+            reminder +=xd
+            decimal = Math.floor(decimal/2)
+        }
+        return reminder.split("").reverse().join("");
+      }
+
+
+      toBinary(12);
+
+
+
+
+      function toDecimal(binary) {
+          let sum=0;
+        for(let i =0; i<binary.length;i++){
+            sum += Number(binary[i]) * Math.pow(2, binary.length - 1 - i);
+        }
+        return sum;
+      }
+
+      toDecimal("101")
