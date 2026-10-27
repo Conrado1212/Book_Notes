@@ -1149,4 +1149,39 @@ function extractAttributes(element) {
         return sum;
       }
 
-      toDecimal("101")
+      toDecimal("101");
+
+
+
+      function sequence(n) {
+          let test ='';
+        for(let i=1;i<n+1;i++){
+            test+=i
+        }
+        return test;
+      }
+
+      sequence(5);
+
+
+      function formatNumber(number) {
+
+        return `+${number.slice(0, 1)} (${number.slice(1, 4)}) ${number.slice(4, 7)}-${number.slice(7)}`;
+      }
+      formatNumber("05552340182")
+
+      //"+1 (555) 435-4792"
+
+
+      function getLongestWord(sentence) {
+         
+        let xd = sentence.slice(0,-1).split(' ');
+        let max =xd[0];
+        xd.slice(1).forEach(e=>{
+            if(e.length > max.length){
+                max = e
+            }
+        })
+        return max;
+      }
+      getLongestWord("Coding challenges are fun and educational.")
