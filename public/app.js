@@ -1184,4 +1184,64 @@ function extractAttributes(element) {
         })
         return max;
       }
-      getLongestWord("Coding challenges are fun and educational.")
+      getLongestWord("Coding challenges are fun and educational.");
+
+
+
+      function navigate(commands) {
+       
+        let history =['Home'];
+        let currentIndex = 0;
+        commands.forEach(c=>{
+            if(c.startsWith("Visit")){
+                history.push(c.slice(6));
+                currentIndex++;
+            }else if(c === 'Back' && currentIndex > 0){
+                currentIndex--;
+            }else if(c === 'Forward'  && currentIndex < history.length - 1){
+                currentIndex++
+            }
+        })
+        return history[currentIndex];
+      }
+
+
+      navigate(["Forward"])
+
+
+      function isSpam(number) {
+        const checks =[number.slice(1, number.indexOf(' ')),
+        number.slice(number.indexOf('(') + 1, number.indexOf(')')),
+        number.slice(number.length-8,number.length-5),
+        number.slice(-4)
+        ];
+        const [countryCode, areaCode, three, last] = checks;
+        console.log('country:', countryCode.length > 2 || !countryCode.startsWith('0'));
+       if(countryCode.length > 2 || !countryCode.startsWith('0')){
+      
+           return true
+       }
+       console.log('area:', Number(areaCode) > 900 || Number(areaCode) < 200);
+       if(Number(areaCode) > 900 || Number(areaCode) < 200){
+       
+        return true
+         }
+         const sum = three.split('').reduce(function(accumulator, currentValue) {
+            return accumulator + Number(currentValue);
+          },0)
+          console.log('sum:', sum, last.includes(String(sum)));
+          if(last.includes(String(sum))){
+         
+              return true;
+          }
+          let digits = /(\d)\1{3,}/;
+          console.log('repeated:', /(\d)\1{3,}/.test(number));
+          if(digits.test(number)){
+            
+              return true;
+          }
+          return false;
+      }
+
+
+      isSpam("+0 (555) 564-1987")
