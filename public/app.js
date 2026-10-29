@@ -1234,9 +1234,10 @@ function extractAttributes(element) {
          
               return true;
           }
+          const onlyDigits = number.replace(/\D/g, "");
           let digits = /(\d)\1{3,}/;
-          console.log('repeated:', /(\d)\1{3,}/.test(number));
-          if(digits.test(number)){
+          console.log('repeated:', /(\d)\1{3,}/.test(onlyDigits));
+          if(digits.test(onlyDigits)){
             
               return true;
           }
@@ -1245,3 +1246,47 @@ function extractAttributes(element) {
 
 
       isSpam("+0 (555) 564-1987")
+
+
+      function sort(emails) {
+        emails.sort((a, b) => {
+            const [usernameA, domainA] = a.split("@");
+            const [usernameB, domainB] = b.split("@");
+    
+            const result = domainA.localeCompare(
+                domainB,
+                undefined,
+                { sensitivity: "base" }
+            );
+    
+            return result || usernameA.localeCompare(
+                usernameB,
+                undefined,
+                { sensitivity: "base" }
+            );
+        });
+    
+        return emails;
+    }
+
+
+      sort(["jill@mail.com", "john@example.com", "jane@example.com"])
+
+
+      function speeding(speeds, limit) {
+        let ddd =[]
+        speeds.forEach((e,i)=>{
+            if(e>limit){
+                ddd.push(e-limit)
+            }
+        }
+
+        )
+        const sum = ddd.reduce(function(accumulator, currentValue) {
+            return accumulator + currentValue;
+          },0)
+        return ddd.length === 0 ? [0,0] : [ddd.length,sum/ddd.length];
+      }
+
+
+      speeding([58, 50, 60, 55], 55)
