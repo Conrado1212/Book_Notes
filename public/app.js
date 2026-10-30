@@ -1,3 +1,5 @@
+const { set } = require("express/lib/application");
+
 const xd = document.getElementById('search-input');
 const order = document.getElementById('order');
 const add = document.getElementById('add');
@@ -1289,4 +1291,68 @@ function extractAttributes(element) {
       }
 
 
-      speeding([58, 50, 60, 55], 55)
+      speeding([58, 50, 60, 55], 55);
+
+
+
+      function nthPrime(n) {
+        let prime =[]
+       
+        for(let i=2;prime.length<n;i++){
+            let isPrime = true;
+            for (let j=2;j<i;j++){
+                if(i %j ===0){
+                    isPrime = false;
+                    break;
+                }
+              
+               
+            }
+            if(isPrime){
+                prime.push(i)
+            }
+           
+        }
+      
+        return prime[n-1];
+      }
+
+      nthPrime(5)
+
+
+      function secondLargest(arr) {
+
+        return [...new Set(arr)].sort((a, b) => b - a)[1];
+      }
+
+
+      secondLargest([1, 2, 3, 4]);
+
+
+      function isPerfectSquare(n) {
+       let ddd = Number.isInteger(Math.sqrt(n))
+       console.log(ddd);
+       if(ddd*ddd === n){
+           return true;
+       }else{
+           return false;
+       }
+    }
+
+    isPerfectSquare(99);
+
+
+    function isMirror(str1, str2) {
+        let revert ='';
+        let ddd =str1.replace(/[^\p{L}]/gu, "")
+        let ddd2 =str2.replace(/[^\p{L}]/gu, "")
+        for(let i=ddd.length-1;i>=0;i--){
+            revert+=ddd[i]
+        }
+        console.log(revert);
+      
+            return revert === ddd2;
+      
+      }
+
+      isMirror("Hello World", "dlroW-olleH")
