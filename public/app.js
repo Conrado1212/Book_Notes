@@ -1355,4 +1355,104 @@ function extractAttributes(element) {
       
       }
 
-      isMirror("Hello World", "dlroW-olleH")
+      isMirror("Hello World", "dlroW-olleH");
+
+
+
+      function spookify(boo) {
+       let ddd =  boo.replace(/[_-]/g, "~")
+       let result =''
+       let count =0;
+       for(let i=0;i<ddd.length;i++){
+        if(ddd[i]=== '~'){
+            result+=ddd[i];
+        }else{
+            if(count % 2=== 0){
+                result+=ddd[i].toUpperCase();
+                count++;
+            }else{
+                result+=ddd[i].toLowerCase();
+                count++;
+            }
+        }
+        
+       }
+       
+        return result;
+      }
+
+
+
+      spookify("hello_world")
+
+
+
+      function digitsOrLetters(str) {
+        let digits = str.replace(/[a-zA-Z]/g,"");
+        let letters = str.replace(/[0-9]/g,"");
+        console.log(letters);
+        console.log(digits);
+        if(letters.length === digits.length){
+            return 'tie'
+        }else if(letters.length > digits.length){
+            return 'letters'
+        }else{
+            return 'digits'
+        }
+       
+      }
+
+      digitsOrLetters("a1b2c3d");
+
+
+
+
+      function numberOfVideos(videoSize, videoUnit, driveSize, driveUnit) {
+        const units = {
+            B: 1,
+            KB: 1000,
+            MB: 1000 ** 2,
+            GB: 1000 ** 3,
+            TB: 1000 ** 4
+        };
+        if(videoUnit != 'MB' && videoUnit != 'B' && videoUnit != 'KB' && videoUnit != 'GB'){
+            return 'Invalid video unit'
+        }
+        if(driveUnit != 'TB' && driveUnit != 'GB'){
+            return 'Invalid drive unit'
+        }
+        const videoBytes = videoSize * units[videoUnit];
+        const driveBytes = driveSize * units[driveUnit];
+        return parseInt(driveBytes/videoBytes)
+      }
+
+
+      numberOfVideos(1.5, "GB", 2.2, "TB");
+
+
+
+
+      function numberOfFiles(fileSize, fileUnit, driveSizeGb) {
+        const units = {
+            B: 1,
+            KB: 1000,
+            MB: 1000 ** 2,
+            GB: 1000 ** 3,
+            TB: 1000 ** 4
+        };
+        const data = fileSize * units[fileUnit];
+        const driver  = driveSizeGb * units['GB'];
+        return parseInt(driver/data);
+      }
+
+
+      numberOfFiles(4096, "B", 1.5);
+
+
+
+      function numberOfPhotos(photoSizeMb, hardDriveSizeGb) {
+      
+        return  parseInt((hardDriveSizeGb*1000)/photoSizeMb);
+      }
+
+      numberOfPhotos(3.5, 750)
