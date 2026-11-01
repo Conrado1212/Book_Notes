@@ -1495,5 +1495,8 @@ function extractAttributes(element) {
 
       function costToFill(tankSize, fuelLevel, pricePerGallon) {
 
-        return tankSize;
+        return '$'+((tankSize-fuelLevel)*pricePerGallon).toFixed(2);
       }
+
+
+      costToFill(20, 0, 4.00);
