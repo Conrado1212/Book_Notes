@@ -1455,4 +1455,45 @@ function extractAttributes(element) {
         return  parseInt((hardDriveSizeGb*1000)/photoSizeMb);
       }
 
-      numberOfPhotos(3.5, 750)
+      numberOfPhotos(3.5, 750);
+
+
+
+
+//letter.toLowerCase().charCodeAt(0) - 96;
+//letter.toLowerCase().charCodeAt(0) - 55;
+      function verify(message, key, signature) {
+          let mes =0;
+          let k =0;
+          let lm = message.replace(/[^a-zA-Z]/g,"");
+          let lk = key.replace(/[^a-zA-Z]/g,"");
+        for(let i =0;i<lm.length;i++){
+            if(lm[i] === lm[i].toUpperCase()){
+                mes+= lm[i].toUpperCase().charCodeAt(0) - 38; 
+            }else{
+                mes+= lm[i].toLowerCase().charCodeAt(0) - 96; 
+            }
+           
+        }
+        for(let i =0;i<lk.length;i++){
+            if(lk[i] === lk[i].toUpperCase()){
+                k+= lk[i].toUpperCase().charCodeAt(0) - 38; 
+            }else{
+                k+= lk[i].toLowerCase().charCodeAt(0) - 96; 
+            }
+          
+        }
+        console.log(mes);
+        console.log(k);
+        console.log(mes+k);
+        return  (mes+k)=== signature;
+      }
+
+
+      verify("Is this valid?", "Yes", 233);
+
+
+      function costToFill(tankSize, fuelLevel, pricePerGallon) {
+
+        return tankSize;
+      }
