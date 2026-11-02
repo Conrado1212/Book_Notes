@@ -1185,4 +1185,46 @@ Sidebar	#211D21
 Ciemna stal	#454247
 Czerwień Diablo	#732522
 Srebrne obramowania	rgba(185,157,150,.22)
+
+
+
+background:
+    radial-gradient(
+        ellipse at 15% 0%,
+        rgba(115, 37, 34, .12),
+        transparent 45%
+    ),
+    #171619;
+
+
+    01
+Obsidian
+
+Główne tło
+
+#171619
+
+
+02
+Dark steel
+
+Panele i sidebar
+
+#29242A
+
+
+03
+Brushed steel
+
+Przyciski i elementy
+
+#454247
+
+
+04
+Blood red
+
+Akcenty i aktywne stany
+
+#732522
 */
