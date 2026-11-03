@@ -1272,4 +1272,10 @@ Akcenty i aktywne stany
         #211b20 72%,
         #171619 100%
     ) !important;
+
+
+    ///ssss
+    background: radial-gradient(ellipse at 15% 0%, rgba(115, 37, 34, 0.10) 0%, transparent 40%), radial-gradient(ellipse at 100% 100%, rgba(75, 48, 57, 0.07) 0%, transparent 45%), linear-gradient(135deg, #1C191D 0%, #211D21 45%, #171619 100%) !important;
+}
+
 */
