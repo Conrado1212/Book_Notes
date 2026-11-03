@@ -1227,4 +1227,49 @@ Blood red
 Akcenty i aktywne stany
 
 #732522
+
+
+
+ background: radial-gradient(
+        circle at 35% 30%,
+        #E68B80 0%,
+        #A83232 30%,
+        #651C24 68%,
+        #2A1218 100%
+    );
+
+    box-shadow:
+        0 0 5px rgba(180, 45, 45, .65),
+        0 0 13px rgba(140, 30, 35, .45);
+
+
+
+        sdsdsd
+
+
+         background:
+    radial-gradient(
+        ellipse at 12% 0%,
+        rgba(210, 205, 205, 0.16) 0%,
+        transparent 38%
+    ),
+    radial-gradient(
+        ellipse at 90% 100%,
+        rgba(130, 35, 38, 0.22) 0%,
+        transparent 45%
+    ),
+    linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 25%,
+        rgba(115, 37, 34, 0.10) 58%,
+        rgba(0, 0, 0, 0.20) 100%
+    ),
+    linear-gradient(
+        135deg,
+        #383238 0%,
+        #292329 42%,
+        #211b20 72%,
+        #171619 100%
+    ) !important;
 */
