@@ -1500,3 +1500,84 @@ function extractAttributes(element) {
 
 
       costToFill(20, 0, 4.00);
+
+
+
+
+      function combinations(cards) {
+        
+
+        return silnia(52)/(silnia(cards)*silnia(52-cards));
+      }  
+
+
+      function silnia(n){
+        if(n <= 1){
+            return 1;
+        }
+        return n * silnia(n-1)
+      }
+
+      function combinations2(cards) {
+        
+
+        return silnia(52)/(silnia(cards)*silnia(52-cards));
+      }  
+
+
+      combinations(52)
+
+      function itSIlnia(n){
+          let result  =1;
+          for(let i = 2; i<=n;i++){
+            result*=i;
+          }
+          return result;
+      }
+
+      function itSIlnia(n){
+        let result  =1;
+
+        for(let i = 1 ; i<=n;i++){
+          result = result * (52-i+1)/i;
+        }
+        return result;
+    }
+
+    itSIlnia(2);
+
+
+
+
+
+
+
+    function getWeekday(dateString) {
+        let date = new Date(dateString);
+        return  new Intl.DateTimeFormat('en-US', {
+            weekday: 'long'
+        }).format(date);
+      }
+
+
+      getWeekday("2025-11-06");
+
+
+
+
+      function buildMatrix(rows, cols) {
+        let result =[];
+        for(let i =0;i<rows;i++){
+            let row = [];
+            for(let j = 0;j<cols;j++){
+                row.push(0);
+            }
+            result.push(row)
+        }
+
+
+        return result;
+      }
+
+
+      buildMatrix(2, 3)
