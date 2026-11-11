@@ -1580,4 +1580,188 @@ function extractAttributes(element) {
       }
 
 
-      buildMatrix(2, 3)
+      buildMatrix(2, 3);
+
+
+
+
+      function canPost(message) {
+        if(message.length <=40){
+            return 'short post'
+        }else if(message.length >40 && message.length <=80){
+            return 'long post'
+        }else{
+            return 'invalid post'
+        }
+       
+      }
+
+      canPost("Hello world")
+
+
+      function imageSearch(images, term) {
+          let result =[]
+        images.forEach(i=>{
+            if(i.toLowerCase().includes(term.toLowerCase())){
+                result.push(i)
+            }
+        })
+        return result;
+      }
+
+      imageSearch(["Sunset.jpg", "Beach.png", "sunflower.jpeg"], "sun")
+      imageSearch(["dog.png", "cat.jpg", "parrot.jpeg"], "dog");
+
+
+
+
+      function countWords(sentence) {
+
+        return sentence.split(' ').length;
+      }
+
+      countWords("Hello world");
+
+
+
+      function infected(days) {
+        let result  =1
+       
+     
+        if(days>0){
+            for(let i =1;i<=days;i++){
+               
+                result *=2;
+                if(i%3 ===0 ){
+                    result   -= Math.ceil(result * 0.2)
+                }
+            }
+        }
+
+        return parseInt(result);
+      }
+
+
+      infected(1)
+
+
+      function findWord(matrix, word) {
+          let ruslt =[]
+        const first = word[0];
+       
+
+        const directions = [
+            [0, 1],  
+            [0, -1], 
+            [1, 0],  
+            [-1, 0]  
+        ];
+
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] === first) {
+                  
+                    for (const [dx, dy] of directions) {
+                        let match = true;
+                    
+                        for (let k = 1; k < word.length; k++) {
+                            const row = i + dx * k;
+                            const col = j + dy * k;
+                            if (
+                                row < 0 ||
+                                row >= matrix.length ||
+                                col < 0 ||
+                                col >= matrix[row].length ||
+                                matrix[row][col] !== word[k]
+                            ) {
+                                match = false;
+                                break;
+                            }
+
+                        }
+                        if (match) {
+                            return [
+                                [i, j],
+                                [
+                                    i + dx * (word.length - 1),
+                                    j + dy * (word.length - 1)
+                                ]
+                            ];
+                        }
+                    }                    
+                }
+               
+            }
+        }
+        return ruslt;
+      }
+
+
+    
+
+      findWord([["a", "c", "t"], ["t", "a", "t"], ["c", "t", "c"]], "cat");
+
+
+
+      function count(str) {
+        let vowels = ['a','e','i','o','u']
+      let v1 =0;
+      let v2 = 0;
+       str = str.replace(/[^a-zA-Z]/g, '');
+
+       str.toLowerCase().split('').forEach(w=>{
+           if(vowels.includes(w)){
+               v1++
+           }else{
+               v2++
+           }
+       })
+       return [v1,v2];
+      }
+
+
+      count("Hello World");
+
+
+
+      function getExtension(filename) {
+        const index  = filename.lastIndexOf('.')
+        if(index === -1){
+            return "none"
+        }else if(filename.slice(index+1).length >0){
+            return filename.slice(index+1)
+        }else{
+            return "none"
+        }
+       
+         
+      }
+
+      getExtension("final.draft.");
+
+
+      function generateSlug(str) {
+       
+        return str.toLowerCase().trim().replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '%20')
+      }
+
+
+      generateSlug("  ?H^3-1*1]0! W[0%R#1]D  ");
+
+
+      function capitalize(paragraph) {
+
+        return paragraph.replace(/(^\s*|[.!?]+\s*)([a-z])/gi, (prefix, letter) => {
+            return prefix + letter.toUpperCase();
+        });
+      }
+      
+
+
+      capitalize("this is a simple sentence.");
+
+
+      function adjustThermostat(temp, target) {
+
+        return temp;
+      }
