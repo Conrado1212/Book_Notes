@@ -1763,5 +1763,113 @@ function extractAttributes(element) {
 
       function adjustThermostat(temp, target) {
 
-        return temp;
+        return temp < target ? 'heat' : temp > target ? 'cool' : 'hold';
       }
+
+      adjustThermostat(68, 72);
+
+
+      function getWords(paragraph) {
+        const result ={};
+        paragraph.toLowerCase().trim().split(/\s+/).forEach(w =>{
+            const word = w.replace(/[.,!?;:]/g, '');
+            if(result[word]){
+                result[word]++;
+            }else{
+                result[word] = 1;
+            }
+        })
+         return Object.entries(result).sort((a, b)=>b[1] -a[1]).slice(0,3).map(([word,c])=>word);
+      }
+
+      getWords("I like coding. I like testing. I love debugging!");
+
+
+
+      function findMissingNumbers(arr) {
+
+        return arr;
+      }
+
+
+
+      function findMissingNumbers(arr) {
+          let result =[]
+          const min = Math.min(...arr);
+            const max = Math.max(...arr);
+        for(let i=min;i<=max;i++){
+            if(!arr.includes(i)){
+                result.push(i)
+            }
+        }
+        return result;
+      }
+
+
+      findMissingNumbers([10, 1, 10, 1, 10, 1]);
+
+
+      function tooMuchScreenTime(hours) {
+
+        for (const h of hours) {
+            if (h > 9) {
+                return true;
+            }
+        }
+
+        for (let i = 0; i <= hours.length - 3; i++) {
+            const avg = (hours[i] + hours[i + 1] + hours[i + 2]) / 3;
+        
+            if (avg >= 8) {
+                return true;
+            }
+        }
+        const avg = hours.reduce((sum, h) => sum + h, 0) / 7;
+        if(avg >=6){
+            return true;
+        }
+
+        return false;
+      }
+
+
+      tooMuchScreenTime([1, 2, 3, 11, 1, 3, 4]);
+
+
+
+      function reverseSentence(sentence) {
+        let data  = sentence.trim().split(/\s+/);
+        let aa =''
+        for(let i=data.length-1;i>=0;i--){
+            aa +=data[i]+' ';
+        }
+          return aa.trim()
+      }
+
+      reverseSentence("npm  install   apt    sudo");
+
+
+
+
+      function arrayDiff(arr1, arr2) {
+          let result =[]
+        for(let i =0;i<arr1.length;i++){
+         
+                if(!arr2.includes(arr1[i])){
+                    result.push(arr1[i])
+                }
+
+            }
+
+           for(let j =0;j<arr2.length;j++){
+         
+                if(!arr1.includes(arr2[j])){
+                    result.push(arr2[j])
+                }
+
+            }
+        return result.sort();
+      }
+
+
+      arrayDiff(["apple", "banana"], ["apple", "banana", "cherry"])
