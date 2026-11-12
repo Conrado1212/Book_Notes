@@ -1277,5 +1277,95 @@ Akcenty i aktywne stany
     ///ssss
     background: radial-gradient(ellipse at 15% 0%, rgba(115, 37, 34, 0.10) 0%, transparent 40%), radial-gradient(ellipse at 100% 100%, rgba(75, 48, 57, 0.07) 0%, transparent 45%), linear-gradient(135deg, #1C191D 0%, #211D21 45%, #171619 100%) !important;
 }
+  border: 22px solid transparent !important;
+        border-image-source: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%3E%0A%3Cdefs%3E%0A%20%20%3ClinearGradient%20id%3D%22steel%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220.18%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f1ece9%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.13%22%20stop-color%3D%22%23bdb4b3%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.29%22%20stop-color%3D%22%23625b60%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.43%22%20stop-color%3D%22%23e4dcda%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.58%22%20stop-color%3D%22%23888084%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.73%22%20stop-color%3D%22%23353136%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.87%22%20stop-color%3D%22%23c8bfbd%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23625b60%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%20%20%3ClinearGradient%20id%3D%22edgeLight%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23fffaf5%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.45%22%20stop-color%3D%22%23d3cbca%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2371686c%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%20%20%3ClinearGradient%20id%3D%22edgeDark%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2308070a%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.5%22%20stop-color%3D%22%23252126%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308070a%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%20%20%3ClinearGradient%20id%3D%22ember%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%220%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%234b1218%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.48%22%20stop-color%3D%22%23cf3a2c%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2355151b%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%20%20%3ClinearGradient%20id%3D%22face%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23777075%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.24%22%20stop-color%3D%22%2329252b%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.52%22%20stop-color%3D%22%234b454b%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%220.76%22%20stop-color%3D%22%2319171b%22%2F%3E%0A%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23999092%22%2F%3E%0A%20%20%3C%2FlinearGradient%3E%0A%20%20%3Cpattern%20id%3D%22braid%22%20width%3D%22192%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%3Crect%20width%3D%22192%22%20height%3D%2232%22%20fill%3D%22url%28%23face%29%22%2F%3E%0A%20%20%20%20%3C%21--%20outer%20and%20inner%20rails%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%202H192%20M0%205H192%20M0%2027H192%20M0%2030H192%22%20fill%3D%22none%22%20stroke%3D%22%2309080b%22%20stroke-width%3D%223.6%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%201.7H192%20M0%204.5H192%20M0%2026.5H192%20M0%2029.2H192%22%20fill%3D%22none%22%20stroke%3D%22url%28%23edgeLight%29%22%20stroke-width%3D%221.1%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%203.2H192%20M0%2028H192%22%20fill%3D%22none%22%20stroke%3D%22%23e7e0dc%22%20stroke-width%3D%22.55%22%20opacity%3D%22.8%22%2F%3E%0A%20%20%20%20%3C%21--%20braided%20interlaced%20steel%20cables%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%208%20C48%208%2048%2024%2096%2024%20S144%208%20192%208%22%20fill%3D%22none%22%20stroke%3D%22%2308070a%22%20stroke-width%3D%228.5%22%20stroke-linecap%3D%22square%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%2024%20C48%2024%2048%208%2096%208%20S144%2024%20192%2024%22%20fill%3D%22none%22%20stroke%3D%22%2308070a%22%20stroke-width%3D%228.5%22%20stroke-linecap%3D%22square%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%208%20C48%208%2048%2024%2096%2024%20S144%208%20192%208%22%20fill%3D%22none%22%20stroke%3D%22url%28%23steel%29%22%20stroke-width%3D%225.5%22%20stroke-linecap%3D%22square%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%2024%20C48%2024%2048%208%2096%208%20S144%2024%20192%2024%22%20fill%3D%22none%22%20stroke%3D%22url%28%23steel%29%22%20stroke-width%3D%225.5%22%20stroke-linecap%3D%22square%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%206.5%20C48%206.5%2048%2022.5%2096%2022.5%20S144%206.5%20192%206.5%22%20fill%3D%22none%22%20stroke%3D%22%23fff8f2%22%20stroke-width%3D%221.05%22%20opacity%3D%22.78%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%2022.5%20C48%2022.5%2048%206.5%2096%206.5%20S144%2022.5%20192%2022.5%22%20fill%3D%22none%22%20stroke%3D%22%23f1e9e5%22%20stroke-width%3D%221.05%22%20opacity%3D%22.75%22%2F%3E%0A%20%20%20%20%3C%21--%20fine%20dark%20engraved%20line%20and%20faint%20ember%20under%20the%20weave%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%2016H192%22%20stroke%3D%22%2309080b%22%20stroke-width%3D%221.1%22%20opacity%3D%22.7%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%2031H192%22%20stroke%3D%22url%28%23ember%29%22%20stroke-width%3D%22.7%22%20opacity%3D%22.46%22%2F%3E%0A%20%20%3C%2Fpattern%3E%0A%20%20%3Cg%20id%3D%22corner%22%3E%0A%20%20%20%20%3C%21--%20dark%20forged%20corner%20plate%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200H32V8L8%2032H0Z%22%20fill%3D%22url%28%23face%29%22%20stroke%3D%22%2309080b%22%20stroke-width%3D%221.7%22%2F%3E%0A%20%20%20%20%3C%21--%20bevels%2C%20like%20an%20engraved%20steel%20frame%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M1%201H29L7%2029H1Z%22%20fill%3D%22none%22%20stroke%3D%22url%28%23edgeLight%29%22%20stroke-width%3D%221.5%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M4%204H22L4%2022Z%22%20fill%3D%22%23aaa0a0%22%20opacity%3D%22.18%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M2%208L8%202L29%202L7%2024L2%2029Z%22%20fill%3D%22none%22%20stroke%3D%22%23383239%22%20stroke-width%3D%222.2%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M3%203L26%203L3%2026%22%20fill%3D%22none%22%20stroke%3D%22%23e5ddda%22%20stroke-width%3D%22.75%22%20opacity%3D%22.9%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M6%2029L29%206%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ember%29%22%20stroke-width%3D%221.1%22%20opacity%3D%22.85%22%2F%3E%0A%20%20%20%20%3C%21--%20tiny%20forged%20rivet%20--%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7%207L11%205L13%207L11%2011L7%2013L5%2011Z%22%20fill%3D%22url%28%23steel%29%22%20stroke%3D%22%23171419%22%20stroke-width%3D%22.8%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M7%207L11%207L7%2011Z%22%20fill%3D%22%23f3ebe7%22%20opacity%3D%22.85%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fdefs%3E%0A%3C%21--%20source%20is%20a%209-slice%20image%3A%2032px%20corners%2C%20192px%20repeatable%20edge%20modules%20--%3E%0A%3Crect%20x%3D%2232%22%20y%3D%220%22%20width%3D%22576%22%20height%3D%2232%22%20fill%3D%22url%28%23braid%29%22%2F%3E%0A%3Cg%20transform%3D%22translate%28640%200%29%20rotate%2890%29%22%3E%3Crect%20x%3D%2232%22%20y%3D%220%22%20width%3D%22576%22%20height%3D%2232%22%20fill%3D%22url%28%23braid%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%28640%20640%29%20rotate%28180%29%22%3E%3Crect%20x%3D%2232%22%20y%3D%220%22%20width%3D%22576%22%20height%3D%2232%22%20fill%3D%22url%28%23braid%29%22%2F%3E%3C%2Fg%3E%0A%3Cg%20transform%3D%22translate%280%20640%29%20rotate%28-90%29%22%3E%3Crect%20x%3D%2232%22%20y%3D%220%22%20width%3D%22576%22%20height%3D%2232%22%20fill%3D%22url%28%23braid%29%22%2F%3E%3C%2Fg%3E%0A%3C%21--%20four%20engraved%20corner%20plates%20--%3E%0A%3Cuse%20href%3D%22%23corner%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xlink%3Ahref%3D%22%23corner%22%20x%3D%220%22%20y%3D%220%22%2F%3E%0A%3Cuse%20href%3D%22%23corner%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xlink%3Ahref%3D%22%23corner%22%20transform%3D%22translate%28640%200%29%20scale%28-1%201%29%22%2F%3E%0A%3Cuse%20href%3D%22%23corner%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xlink%3Ahref%3D%22%23corner%22%20transform%3D%22translate%280%20640%29%20scale%281%20-1%29%22%2F%3E%0A%3Cuse%20href%3D%22%23corner%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xlink%3Ahref%3D%22%23corner%22%20transform%3D%22translate%28640%20640%29%20scale%28-1%20-1%29%22%2F%3E%0A%3C%2Fsvg%3E") !important;
+        border-image-slice: 32 fill !important;
+        border-image-width: 8px !important;
+        border-image-outset: 2px !important;
+        border-image-repeat: no-repeat !important;
 
+
+
+        h2{
+    
+
+      
+        letter-spacing: 3px;
+        font-family: 'Marcellus SC', serif;
+        
+        background: linear-gradient(
+            180deg,
+            #e2d9d5 0%,
+            #aaa0a0 18%,
+            #ded3ce 35%,
+            #6d6264 52%,
+            #b9acad 68%,
+            #51484b 85%,
+            #c9babb 100%
+        );
+    
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-stroke: .5px #525252;
+    
+       
+        -webkit-text-stroke: .5px #525252;
+    
+       
+        text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.12),
+            0 2px 2px rgba(0, 0, 0, 0.8),
+            0 3px 5px rgba(0, 0, 0, 0.6),
+            0 0 4px rgba(130, 0, 15, 0.25);
+    
+    
+}
+
+
+h2{
+    
+
+      
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+    180deg,
+    #050405 0%,
+    #211719 8%,
+    #c8b9b4 15%,
+    #514044 24%,
+    #650b18 30%,
+    #e0d2cb 40%,
+    #5b4d50 52%,
+    #211719 62%,
+    #b6a5a2 72%,
+    #500913 82%,
+    #342629 90%,
+    #d5c5bd 100%
+);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+   
+    -webkit-text-stroke: .8px #29181c;
+
+    
+    text-shadow:
+        0 -1px 0 rgba(255, 255, 255, 0.5),
+        1px 1px 0 #65565a,
+        0 2px 0 #302629,
+        0 3px 2px rgba(0,0,0,.9),
+        0 5px 5px rgba(0,0,0,.7),
+        0 0 4px rgba(120,0,15,.4),
+        0 0 8px rgba(100,0,10,.2);
+    
+}
 */

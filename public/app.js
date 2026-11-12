@@ -1873,3 +1873,21 @@ function extractAttributes(element) {
 
 
       arrayDiff(["apple", "banana"], ["apple", "banana", "cherry"])
+
+
+
+
+      function generateSignature(name, title, company) {
+       
+        
+        if(name[0].toLowerCase().charCodeAt(0) - 96 <10){
+            return `>>${name}, ${title} at ${company}`
+        }else if(name[0].toLowerCase().charCodeAt(0) - 96 <19){
+            return `--${name}, ${title} at ${company}`
+        }else{
+            return `::${name}, ${title} at ${company}`
+        }
+      }
+
+
+      generateSignature("Quinn Waverly", "Founder and CEO", "TechCo")
